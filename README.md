@@ -17,27 +17,114 @@ Here is a straightforward TO-DO application with CRUD operations. This implement
 Invoke-RestMethod -Uri http://localhost:6969/ -Method Post -Headers @{"Content-Type"="application/json"} -Body '{"task": "Sample Task", "created": "2023-01-05"}'
 ```
 
+```python
+> UruvaakuVadharku
+app.post('/', (req, res) => {
+  const { task, created } = req.body;
+
+  db.run('INSERT INTO tasks (task, created, status) VALUES (?, ?, ?)', [task, created, false], function (err) {
+    if (err) {
+      console.error(err.message);
+      return res.status(500).json({ error: 'server kolaru' });
+    }
+
+    res.status(201).json({ id: this.lastID, task, created, status: false });
+  });
+});
+```
+---
+
 ### Get All Tasks
 
 ```javascript
 Invoke-RestMethod -Uri http://localhost:6969/ -Method Get
 ```
 
+```python
+> Papadharku
+app.get('/', (req, res) => {
+  db.all('SELECT * FROM tasks', (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      return res.status(500).json({ error: 'Server Kolaru' });
+    }
+    const tasks = rows.reduce((acc, task) => {
+      task.status ? acc.Mudichiten.push(task) : acc.Innum_Mudikala.push(task);
+      return acc;
+    }, { Mudichiten: [], Innum_Mudikala: [] });
+
+    res.json(tasks);
+  });
+});
+```
+---
+
 ### Update Task Status
 
 ```javascript
 Invoke-RestMethod -Uri http://localhost:6969/10121 -Method Put -Headers @{"Content-Type"="application/json"} -Body '{"status": true}'
 ```
+
+```python
+> ThiruthuVatharuku
+app.put('/:id', (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  db.run('UPDATE tasks SET status = ? WHERE id = ?', [status, id], function (err) {
+    if (err) {
+      console.error(err.message);
+      return res.status(500).json({ error: 'Server kolaru' });
+    }if (this.changes === 0) {
+      return res.status(404).json({ error: 'Apdi oru Task illa' });
+    }
+    res.json({ id, status });
+  });
+});
+```
+---
+
 ### Delete a Task
 
 ```javascript
 Invoke-RestMethod -Uri http://localhost:6969/10122 -Method Delete
 ```
 
+```python
+> Alipadharku
+app.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  db.run('DELETE FROM tasks WHERE id = ?', [id], function (err) {
+    if (err) {
+      console.error(err.message);
+      return res.status(500).json({ error: 'Server kolaru' });
+    }if (this.changes === 0) {
+      return res.status(404).json({ error: 'Apdi oru Task illa' });
+    }
+    res.json({ Thagaval: 'Task delete Panniten', DeletedTaskId: id });
+  });
+});
+```
+---
+
 ### Delete All Tasks
 
 ```javascript
 Invoke-RestMethod -Uri http://localhost:6969/all -Method Delete
+```
+
+```python
+// Mothamaga Alipadharku
+app.delete('/all',(req, res) => {
+  db.run('DELETE FROM tasks', function(err){
+    if(err){
+      console.log(err.message);
+      return res.status(500).json({error: 'server Kolaru'});
+    }
+    res.json({Thagaval: 'Totall Task Gaali..'});
+  });
+});
 ```
 ---
 
