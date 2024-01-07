@@ -91,7 +91,7 @@ app.put('/:id', (req, res) => {
 ### Delete a Task
 
 ```javascript
-Invoke-RestMethod -Uri http://localhost:6969/10122 -Method Delete
+Invoke-RestMethod -Uri http://localhost:6969/10121 -Method Delete
 ```
 
 ```python
