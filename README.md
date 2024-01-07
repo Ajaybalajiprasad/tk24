@@ -2,7 +2,7 @@
 
 ### About the Project
 
-Here is a straightforward TO-DO application with CRUD operations. This implementation uses SQLite for the database, as I'm more familiar with it than PostgreSQL. Below, you'll find information on API endpoints, CRUD operations and a database schema. Additionally, I've included commands for PowerShell and attached some screenshots to help you visualize these endpoints.
+Here is a straightforward TO-DO application with CRUD operations. This implementation uses SQLite for the database, as I'm more familiar with it than PostgreSQL. Below, you'll find information on API endpoints, CRUD operations and a database schema. Additionally, I've included commands for PowerShell.
 
 ## API Endpoints
 
