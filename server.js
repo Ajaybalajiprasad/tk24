@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-const db = new sqlite3.Database('tasks.db');
+const db = new sqlite3.Database('task.db');
 
 db.run(`
   CREATE TABLE IF NOT EXISTS tasks (
