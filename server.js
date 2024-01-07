@@ -23,14 +23,18 @@ db.run(`
 
 // UruvaakuVadharku
 app.post('/', (req, res) => {
-  const { task, created } = req.body;
+  const {id,task,created} = req.body;
+  const sql = 'INSERT INTO tasks (id, task, created, status) VALUES (?, ?, ?, ?)';
+  const params = [id, task, created, false];
 
-  db.run('INSERT INTO tasks (task, created, status) VALUES (?, ?, ?)', [task, created, false], function (err) {
+  db.run(sql, params, function (err) {
     if (err) {
       console.error(err.message);
-      return res.status(500).json({ error: 'server kolaru' });
+      if (err.code === 'SQLITE_CONSTRAINT') {
+        return res.status(409).json({ error: 'Id already irukunga' });
+      }
+      return res.status(500).json({ error: 'Server Kolaru' });
     }
-
     res.status(201).json({ id: this.lastID, task, created, status: false });
   });
 });
