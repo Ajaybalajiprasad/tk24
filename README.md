@@ -14,7 +14,7 @@ Here is a straightforward TO-DO application with CRUD operations. This implement
 ### Create a Task
 
 ```javascript
-Invoke-RestMethod -Uri http://localhost:6969/ -Method Post -Headers @{"Content-Type"="application/json"} -Body '{"task": "Sample Task", "created": "2023-01-05"}'
+Invoke-RestMethod -Uri http://localhost:6969/ -Method Post -Headers @{"Content-Type"="application/json"} -Body '{"id":"10121","task": "Sample Task", "created": "2023-01-05"}'
 ```
 
 ```python
