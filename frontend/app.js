@@ -1,11 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     const createTaskForm = document.getElementById('create-task-form');
     const tasksList = document.getElementById('tasks-list');
     const deleteAllTasksButton = document.getElementById('delete-all-tasks');
+    const baseUrl = 'https://tk24-test.onrender.com';
 
     // Function to get and display tasks
     function getTasks() {
-        fetch('http://localhost:6969/')
+        fetch(`${baseUrl}/`)
             .then(response => response.json())
             .then(data => {
                 tasksList.innerHTML = '';
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const task = document.getElementById('task').value;
         const created = document.getElementById('created').value;
 
-        fetch('http://localhost:6969/', {
+        fetch(`${baseUrl}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to delete a task
     function deleteTask(id) {
-        fetch(`http://localhost:6969/${id}`, {
+        fetch(`${baseUrl}/${id}`, {
             method: 'DELETE'
         })
         .then(response => response.json())
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to delete all tasks
     deleteAllTasksButton.onclick = function() {
-        fetch('http://localhost:6969/all', {
+        fetch(`${baseUrl}/all`, {
             method: 'DELETE'
         })
         .then(response => response.json())
