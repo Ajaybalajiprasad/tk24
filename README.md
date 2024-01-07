@@ -4,6 +4,8 @@
 
 Here is a straightforward TO-DO application with CRUD operations. This implementation uses SQLite for the database, as I'm more familiar with it than PostgreSQL. Below, you'll find information on API endpoints, CRUD operations and a database schema. Additionally, I've included commands for PowerShell.
 
+> Hope i tried my best :)
+
 ## API Endpoints
 
 > commands Power Shell
