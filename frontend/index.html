@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo App</title>
+</head>
+<body>
+<h1>Todo App</h1>
+
+<!-- Form to create a new task -->
+<h2>Create Task</h2>
+<form id="create-task-form">
+    <input type="text" id="task" placeholder="Enter task" required>
+    <input type="date" id="created" required>
+    <button type="submit">Create Task</button>
+</form>
+
+<!-- List of tasks -->
+<h2>Tasks</h2>
+<ul id="tasks-list"></ul>
+
+<!-- Button to delete all tasks -->
+<button id="delete-all-tasks">Delete All Tasks</button>
+
+<script src="app.js"></script>
+</body>
+</html>
